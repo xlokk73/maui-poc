@@ -1,4 +1,8 @@
-﻿namespace MauiApp1;
+﻿#if __ANDROID__
+using Com.Example.Helloandroidlibrary;
+#endif
+
+namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
@@ -11,19 +15,16 @@ public partial class MainPage : ContentPage
 
     private void OnCounterClicked(object sender, EventArgs e)
     {
-        count++;
 
-        if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
-        else
-            CounterBtn.Text = $"Clicked {count} times";
+#if __ANDROID__
+        HelloAndroid helloAndroid = new HelloAndroid();
+        string message = helloAndroid.SayHello();
+        CounterBtn.Text = message;
+#else
+        CounterBtn.Text = "Not Supported";
+#endif
 
         SemanticScreenReader.Announce(CounterBtn.Text);
-    }
-
-    private void OnHelloButtonClicked(object sender, EventArgs e)
-    {
-        DisplayAlert("Message", "Hello", "OK");
     }
 }
 

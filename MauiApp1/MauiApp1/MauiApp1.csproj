@@ -62,4 +62,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="AndroidBinding1">
+	    <HintPath>..\..\AndroidBinding1\AndroidBinding1\bin\Debug\net8.0-android\AndroidBinding1.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
